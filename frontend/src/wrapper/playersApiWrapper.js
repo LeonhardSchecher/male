@@ -62,6 +62,17 @@ export async function removePlayer(playerId) {
   }
 }
 
+
+export async function fetchClubTopPlayers(clubId) {
+  try {
+    const response = await apiClient.get(`/clubs/topPlayer/${clubId}`);
+    return mapPlayersData(response.data);
+  } catch (error) {
+    console.error('Error fetching club top players', error);
+  }
+  
+}
+
 function mapPlayersData(players) {
   return players.map(player => {
     return mapPlayerData(player)

@@ -18,6 +18,24 @@ const getAllClubs = (req, res) => {
     })
 }
 
+
+const getTopClubPlayers = (req, res) =>{
+    const id = parseInt(req.params.id)
+    console.log(`IN - Get clubtopplayers(id=${id}) request`)
+    pool.query("SELECT * from f_klubiparimad($1)", [id], (err, results) => {
+        if (err) {
+            console.error(err)
+            return res.status(500).send({
+                message: "Error while reading club top players with id: " + id,
+                error: err
+            })
+        }
+
+        console.log(`OUT - Get club top players(id=${id}) result: ${JSON.stringify(results.rows)}`)
+        res.status(200).send(results.rows)
+    })
+}
+
 const getClubById = (req, res) => {
     const id = parseInt(req.params.id)
     console.log(`IN - Get club(id=${id}) request`)
@@ -96,4 +114,4 @@ const deleteClub = (req, res) => {
     })
 }
 
-module.exports = { getAllClubs, getClubById, addClub, getTopClubs, deleteClub }
+module.exports = { getAllClubs, getClubById, addClub, getTopClubs, deleteClub, getTopClubPlayers }

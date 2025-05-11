@@ -148,6 +148,7 @@ export default {
 
     goToClubDetails(clubId) {
       this.$router.push(`/klubid/${clubId}`)
+      
     },
 
     openAddClubDialog() {

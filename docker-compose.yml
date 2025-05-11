@@ -26,7 +26,7 @@ services:
       - db
     environment:
       - DB_USER=postgres
-      - DB_PASSWORD=sql
+      - DB_PASSWORD=password
       - DATABASE=male
       - DB_HOST=db
       - DB_PORT=5432
@@ -39,7 +39,7 @@ services:
     container_name: male_db
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=sql
+      - POSTGRES_PASSWORD=password
       - POSTGRES_DB=male
     volumes:
       - postgres_data:/var/lib/postgresql/data

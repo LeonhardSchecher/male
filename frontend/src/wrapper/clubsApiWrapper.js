@@ -9,6 +9,8 @@ export async function fetchAllClubs() {
   }
 }
 
+
+
 export async function fetchClubById(clubId) {
   try {
     const response = await apiClient.get(`/clubs/${clubId}`);
